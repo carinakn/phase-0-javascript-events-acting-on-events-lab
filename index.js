@@ -1,17 +1,30 @@
+const dodger = document.getElementById("dodger");
 function moveDodgerLeft() {
-  const dodger = document.getElementById('dodger');
-  const currentPosition = parseInt(dodger.style.left);
+  const leftNumbers = dodger.style.left.replace("px", "");
+  const left = parseInt(leftNumbers, 10);
 
-  const newPosition = currentPosition - 1;
-
-  dodger.style.left = `${newPosition}px`;
+  if (left > 0) {
+    dodger.style.left = `${left - 1}px`;
+  }
 }
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "ArrowLeft") {
+    moveDodgerLeft();
+  }
+});
 
 function moveDodgerRight() {
-  const dodger = document.getElementById('dodger');
-  const currentPosition = parseInt(dodger.style.left);
+  const rightNumbers = dodger.style.left.replace("px", "");
+  const right = parseInt(rightNumbers, 10);
 
-  const newPosition = currentPosition + 1;
-
-  dodger.style.left = `${newPosition}px`;
+  if (right < 360) {
+    dodger.style.left = `${right + 1}px`;
+  }
 }
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "ArrowRight") {
+    moveDodgerRight();
+  }
+});
